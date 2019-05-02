@@ -4,10 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class KalahTest {
 
@@ -29,5 +28,10 @@ public class KalahTest {
     @Test
     public void assertThatStatusIsAList() {
         assertThat(new Kalah().getStatus(), instanceOf(List.class));
+    }
+
+    @Test
+    public void assertThatInitialGameStateHasFourteenPits() {
+        assertEquals(new Kalah().getStatus().size(), 14);
     }
 }
