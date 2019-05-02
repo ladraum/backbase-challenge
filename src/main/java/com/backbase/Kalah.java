@@ -5,4 +5,5 @@ import lombok.Data;
 @Data
 public class Kalah {
     private Integer gameNumber;
+    private Object status;
 }
