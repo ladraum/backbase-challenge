@@ -16,4 +16,9 @@ public class KalahTest {
     public void assertThatMainGameClassExists() {
         assertNotNull(new Kalah());
     }
+
+    @Test
+    public void assertThatGameHasAStatus() {
+        assertNotNull(new Kalah().getStatus());
+    }
 }
