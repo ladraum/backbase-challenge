@@ -1,14 +1,16 @@
 package com.backbase;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@Data
 public class Kalah {
     private Integer gameNumber;
+    @Getter
+    @Setter
     private List<Integer> status;
 
     public Kalah() {
