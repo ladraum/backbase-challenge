@@ -3,17 +3,20 @@ package com.backbase;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Kalah {
     private Integer gameNumber;
     @Getter
     @Setter
-    private List<Integer> status;
+    private Map<Integer, Integer> status;
 
     public Kalah() {
-        setStatus(new ArrayList<>(Collections.nCopies(14, 0)));
+        Map<Integer, Integer> status = new HashMap<>();
+        for (int i = 0; i < 14; i++) {
+            status.put(i, 0);
+        }
+        setStatus(status);
     }
 }

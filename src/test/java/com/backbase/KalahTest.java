@@ -3,6 +3,7 @@ package com.backbase;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -26,8 +27,8 @@ public class KalahTest {
     }
 
     @Test
-    public void assertThatStatusIsAList() {
-        assertThat(new Kalah().getStatus(), instanceOf(List.class));
+    public void assertThatStatusIsAMap() {
+        assertThat(new Kalah().getStatus(), instanceOf(Map.class));
     }
 
     @Test
