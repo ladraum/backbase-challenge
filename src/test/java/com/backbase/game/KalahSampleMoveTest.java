@@ -75,4 +75,17 @@ public class KalahSampleMoveTest {
 
         checkFinalState(Arrays.asList(10, 1, 0, 1, 3, 0, 24, 11, 2, 0, 2, 4, 2, 12), game);
     }
+
+    @Test
+    public void assertThatGameStateShouldBeRightAfterMovesOn_5_9_2_6_5() throws Exception {
+        Kalah game = new Kalah();
+
+        game.playMove(5);
+        game.playMove(9);
+        game.playMove(2);
+        game.playMove(6);
+        game.playMove(5);
+
+        checkFinalState(Arrays.asList(11, 2, 1, 2, 1, 2, 26, 0, 3, 1, 3, 5, 3, 12), game);
+    }
 }
