@@ -100,4 +100,16 @@ public class KalahInteractionTest {
 
         checkFinalState(Arrays.asList(0, 0, 0, 1, 8, 1, 0, 0, 0, 0, 0, 0, 0, 0), game);
     }
+
+    @Test
+    public void assertThatPlayerTwoCanSeedOnPlayerOneSide() throws Exception {
+        Map<Integer, Integer> status = createClearStatus();
+        status.put(13, 3);
+        Kalah game = new Kalah();
+        game.setStatus(status);
+
+        game.playMove(13);
+
+        checkFinalState(Arrays.asList(1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1), game);
+    }
 }
