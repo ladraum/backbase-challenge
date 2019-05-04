@@ -28,11 +28,19 @@ public class Kalah {
 
     public Kalah playMove(Integer pit) throws IllegalKalahMoveException {
         validateMoveNotInHouse(pit);
-        sowSeedsFromPit(pit);
+        sow(pit);
         return this;
     }
 
-    private void sowSeedsFromPit(Integer pit) {
+    private void sow(Integer pit) {
+        Integer seedsOnFinalPit;
+        do {
+            pit = sowSeedsFromPit(pit);
+            seedsOnFinalPit = getStatus().get(pit);
+        } while (seedsOnFinalPit != 1);
+    }
+
+    private Integer sowSeedsFromPit(Integer pit) {
         Map<Integer, Integer> status = getStatus();
         Integer seedsToMove = getSeedsToMove(pit);
         Integer houseToSkip = getHouseToSkipFromOtherPlayer(pit);
@@ -42,6 +50,7 @@ public class Kalah {
             seedsToMove--;
         }
         setStatus(status);
+        return pit;
     }
 
     private Integer getHouseToSkipFromOtherPlayer(Integer pit) {

@@ -66,14 +66,14 @@ public class KalahInteractionTest {
     @Test
     public void assertThatPlayerCanMoveASingleSeedToTheNextPitWithSeeds() throws Exception {
         Map<Integer, Integer> status = createClearStatus();
-        status.put(3, 1);
+        status.put(3, 2);
         status.put(4, 1);
         Kalah game = new Kalah();
         game.setStatus(status);
 
         game.playMove(3);
 
-        checkFinalState(Arrays.asList(0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), game);
+        checkFinalState(Arrays.asList(0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0), game);
     }
 
     @Test
@@ -147,7 +147,7 @@ public class KalahInteractionTest {
         Kalah game = new Kalah();
         game.setStatus(status);
 
-        game.playMove(5);
+        game.playMove(3);
 
         checkFinalState(Arrays.asList(0, 0, 0, 3, 4, 1, 1, 0, 1, 1, 1, 1, 0, 0), game);
     }
