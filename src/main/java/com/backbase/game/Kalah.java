@@ -137,16 +137,16 @@ public class Kalah {
     }
 
     private boolean noSeedsOnPlayerOneSide() {
-        Integer seedsOnPlayerSide = 0;
-        for (int i = 1; i <= 7; i++) {
-            seedsOnPlayerSide += getStatus().get(i);
-        }
-        return seedsOnPlayerSide == 0;
+        return noSeedsOnPlayerSide(1, 7);
     }
 
     private boolean noSeedsOnPlayerTwoSide() {
+        return noSeedsOnPlayerSide(8, 14);
+    }
+
+    private boolean noSeedsOnPlayerSide(int start, int end) {
         Integer seedsOnPlayerSide = 0;
-        for (int i = 8; i <= 14; i++) {
+        for (int i = start; i <= end; i++) {
             seedsOnPlayerSide += getStatus().get(i);
         }
         return seedsOnPlayerSide == 0;
