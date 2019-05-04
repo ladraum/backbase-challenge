@@ -11,3 +11,7 @@ To run the built file, run:
 To generate the coverage report, run (coverage will be in `target/site/jacoco/index.html`):
 
 `mvn test`
+
+When the application is running, you can access the APIs using the swagger interface in:
+
+`http://host:port/swagger-ui.html`
