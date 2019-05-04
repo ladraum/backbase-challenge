@@ -17,6 +17,8 @@ public class Kalah {
         for (int i = 1; i <= 14; i++) {
             status.put(i, 6);
         }
+        status.put(7, 0);
+        status.put(14, 0);
         setStatus(status);
     }
 }
