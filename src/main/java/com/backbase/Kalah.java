@@ -37,7 +37,12 @@ public class Kalah {
         Integer seedsToMove = getSeedsToMove(pit);
         clearPit(pit);
         Integer nextPit = pit + 1;
-        status.put(nextPit, status.get(nextPit) + seedsToMove);
+        while(seedsToMove != 0) {
+            status.put(nextPit, status.get(nextPit) + 1);
+            seedsToMove--;
+            nextPit++;
+        }
+        setStatus(status);
     }
 
     private void validateMoveNotInHouse(Integer pit) throws IllegalKalahMoveException {
