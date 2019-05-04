@@ -16,12 +16,12 @@ public class KalahInteractionTest {
     }
 
     @Test
-    public void assertThatPlayerCanPlayItsTurn() {
+    public void assertThatPlayerCanPlayItsTurn() throws Exception {
         assertThat(new Kalah().playMove(1), instanceOf(Kalah.class));
     }
 
     @Test
-    public void assertThatPlayerCantMoveFromHouseOnSeven() {
-        assertThrows(IllegalKalahMoveException.class, new Kalah().playMove(7));
+    public void assertThatPlayerCantMoveFromHouseOnSeven() throws Exception {
+        assertThrows(IllegalKalahMoveException.class, () -> {new Kalah().playMove(7);});
     }
 }
