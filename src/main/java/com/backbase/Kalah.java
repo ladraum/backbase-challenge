@@ -38,6 +38,9 @@ public class Kalah {
         clearPit(pit);
         Integer nextPit = pit + 1;
         while(seedsToMove != 0) {
+            if(nextPit == 15) {
+                nextPit = 1;
+            }
             status.put(nextPit, status.get(nextPit) + 1);
             seedsToMove--;
             nextPit++;
