@@ -19,7 +19,7 @@ public class Board {
 
         addNewGameToList(newGameId);
 
-        String uri = String.format("http://%s:%s/games/%d", host, port, newGameId);
+        String uri = buildGameURL(host, port, newGameId);
         return new NewGame(newGameId, uri);
     }
 
@@ -38,7 +38,11 @@ public class Board {
         }
         game.playMove(pit);
 
-        String url = String.format("http://%s:%s/games/%d", host, port, game.getGameNumber());
+        String url = buildGameURL(host, port, game.getGameNumber());
         return new GameStatus(game, url);
+    }
+
+    private String buildGameURL(String host, String port, Integer gameId) {
+        return String.format("http://%s:%s/games/%d", host, port, gameId);
     }
 }
