@@ -36,14 +36,9 @@ public class Kalah {
         Map<Integer, Integer> status = getStatus();
         Integer seedsToMove = getSeedsToMove(pit);
         clearPit(pit);
-        Integer nextPit = pit + 1;
         while(seedsToMove != 0) {
-            if(nextPit == 15) {
-                nextPit = 1;
-            }
-            status.put(nextPit, status.get(nextPit) + 1);
+            pit = seedNextPit(pit);
             seedsToMove--;
-            nextPit++;
         }
         setStatus(status);
     }
@@ -60,5 +55,16 @@ public class Kalah {
 
     private void clearPit(Integer pit) {
         getStatus().put(pit, 0);
+    }
+
+    private Integer seedNextPit(Integer pit) {
+        Map<Integer, Integer> status = getStatus();
+        pit++;
+        if(pit == 15) {
+            pit = 1;
+        }
+        status.put(pit, status.get(pit) + 1);
+        setStatus(status);
+        return pit;
     }
 }
