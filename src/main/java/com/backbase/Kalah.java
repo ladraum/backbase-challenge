@@ -25,4 +25,8 @@ public class Kalah {
     public boolean isGameFinished() {
         return false;
     }
+
+    public Kalah playMove(Integer pit) {
+        return this;
+    }
 }
