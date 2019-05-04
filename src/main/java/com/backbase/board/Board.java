@@ -13,6 +13,8 @@ public class Board {
     List<Kalah> games = new ArrayList<>();
 
     public NewGame createNewGame(String host, String port) {
-        return new NewGame();
+        Integer newGameId = games.size() + 1;
+        String uri = String.format("http://%s:%s/games/%d", host, port, newGameId);
+        return new NewGame(newGameId, uri);
     }
 }
