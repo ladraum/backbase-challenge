@@ -35,4 +35,23 @@ public class KalahTest {
     public void assertThatInitialGameStateHasFourteenPits() {
         assertEquals(new Kalah().getStatus().size(), 14);
     }
+
+    @Test
+    public void assertThatInitialGameTheRightPits() {
+        Map<Integer, Integer> status = new Kalah().getStatus();
+        assertNotNull(status.get(1));
+        assertNotNull(status.get(2));
+        assertNotNull(status.get(3));
+        assertNotNull(status.get(4));
+        assertNotNull(status.get(5));
+        assertNotNull(status.get(6));
+        assertNotNull(status.get(7));
+        assertNotNull(status.get(8));
+        assertNotNull(status.get(9));
+        assertNotNull(status.get(10));
+        assertNotNull(status.get(11));
+        assertNotNull(status.get(12));
+        assertNotNull(status.get(13));
+        assertNotNull(status.get(14));
+    }
 }
