@@ -1,5 +1,7 @@
 package com.backbase.board;
 
+import com.backbase.game.FinishedGameException;
+import com.backbase.game.IllegalKalahMoveException;
 import com.backbase.game.Kalah;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
@@ -23,7 +25,13 @@ public class Board {
         return new NewGame(newGameId, uri);
     }
 
-    public void makeMove(Integer gameIndex, Integer pit) throws GameNotFoundException {
-        throw new GameNotFoundException();
+    public void makeMove(Integer gameIndex, Integer pit) throws GameNotFoundException, IllegalKalahMoveException, FinishedGameException {
+        Kalah game;
+        try {
+            game = getGames().get(gameIndex - 1);
+        } catch (IndexOutOfBoundsException e) {
+            throw new GameNotFoundException();
+        }
+        game.playMove(pit);
     }
 }
