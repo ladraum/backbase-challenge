@@ -61,6 +61,23 @@ public class KalahStateTest {
         assertThrows(FinishedGameException.class, () -> {
             game.playMove(3);
         });
+    }
 
+    @Test
+    public void assertThatPlayerTwoCantPlayOnFinishedGame() {
+        Kalah game = new Kalah();
+        Map<Integer, Integer> status = game.getStatus();
+        status.put(8, 0);
+        status.put(9, 0);
+        status.put(10, 0);
+        status.put(11, 0);
+        status.put(12, 0);
+        status.put(13, 0);
+        status.put(14, 0);
+        game.setStatus(status);
+
+        assertThrows(FinishedGameException.class, () -> {
+            game.playMove(12);
+        });
     }
 }
