@@ -29,7 +29,7 @@ public class Board {
         getGames().add(game);
     }
 
-    public Object makeMove(Integer gameIndex, Integer pit) throws GameNotFoundException, IllegalKalahMoveException, FinishedGameException {
+    public GameStatus makeMove(Integer gameIndex, Integer pit) throws GameNotFoundException, IllegalKalahMoveException, FinishedGameException {
         Kalah game;
         try {
             game = getGames().get(gameIndex - 1);
@@ -37,6 +37,6 @@ public class Board {
             throw new GameNotFoundException();
         }
         game.playMove(pit);
-        return new Object();
+        return new GameStatus();
     }
 }
