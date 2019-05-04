@@ -63,21 +63,25 @@ public class Kalah {
 
     private Integer seedNextPit(Integer pit, Integer houseToSkip) {
         Map<Integer, Integer> status = getStatus();
+        pit = getNextNotHousePit(pit, houseToSkip);
+        status.put(pit, status.get(pit) + 1);
+        setStatus(status);
+        return pit;
+    }
+
+    private Integer getNextNotHousePit(Integer pit, Integer houseToSkip) {
+        pit = getNextPit(pit);
+        if(pit == houseToSkip) {
+            pit = getNextPit(pit);
+        }
+        return pit;
+    }
+
+    public Integer getNextPit(Integer pit) {
         pit++;
         if (pit == 15) {
             pit = 1;
         }
-
-        if(pit == houseToSkip) {
-            if(pit == 14) {
-                pit = 1;
-            } else {
-                pit = 8;
-            }
-        }
-
-        status.put(pit, status.get(pit) + 1);
-        setStatus(status);
         return pit;
     }
 }
