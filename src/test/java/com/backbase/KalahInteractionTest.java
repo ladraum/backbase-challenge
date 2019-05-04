@@ -114,7 +114,7 @@ public class KalahInteractionTest {
     }
 
     @Test
-    public void assertThatPlayerOneCanLoopOverBoard_DontSowPlayerTwoouse_StealFromPlayerTwo() throws Exception {
+    public void assertThatPlayerOneCanLoopOverBoard_DontSowPlayerTwoHouse_StealFromPlayerTwo() throws Exception {
         Map<Integer, Integer> status = createClearStatus();
         status.put(5, 10);
         Kalah game = new Kalah();
@@ -123,5 +123,17 @@ public class KalahInteractionTest {
         game.playMove(5);
 
         checkFinalState(Arrays.asList(1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0), game);
+    }
+
+    @Test
+    public void assertThatPlayerTwoCanLoopOverBoard_DontSowPlayerOneHouse_StealFromPlayerOne() throws Exception {
+        Map<Integer, Integer> status = createClearStatus();
+        status.put(12, 10);
+        Kalah game = new Kalah();
+        game.setStatus(status);
+
+        game.playMove(12);
+
+        checkFinalState(Arrays.asList(1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1), game);
     }
 }
