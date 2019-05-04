@@ -176,4 +176,16 @@ public class KalahInteractionTest {
 
         checkFinalState(Arrays.asList(1, 1, 0, 0, 0, 0, 3, 1, 1, 0, 1, 1, 1, 0), game);
     }
+
+    @Test
+    public void assertThatPlayerTwoStealsFromPlayerOneWhenOnOwnEmptyPit() throws Exception {
+        Map<Integer, Integer> status = createClearStatus();
+        status.put(13, 10);
+        Kalah game = new Kalah();
+        game.setStatus(status);
+
+        game.playMove(13);
+
+        checkFinalState(Arrays.asList(1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 3), game);
+    }
 }
