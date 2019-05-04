@@ -72,4 +72,11 @@ public class KalahTest {
         assertEquals(status.get(12), Integer.valueOf(6));
         assertEquals(status.get(13), Integer.valueOf(6));
     }
+
+    @Test
+    public void assertThatInitialGameHouseHasNoSeeds() {
+        Map<Integer, Integer> status = new Kalah().getStatus();
+        assertEquals(status.get(7), Integer.valueOf(0));
+        assertEquals(status.get(14), Integer.valueOf(0));
+    }
 }
