@@ -17,12 +17,16 @@ public class Board {
     public NewGame createNewGame(String host, String port) {
         Integer newGameId = games.size() + 1;
 
-        Kalah game = new Kalah();
-        game.setGameNumber(newGameId);
-        games.add(game);
+        addNewGameToList(newGameId);
 
         String uri = String.format("http://%s:%s/games/%d", host, port, newGameId);
         return new NewGame(newGameId, uri);
+    }
+
+    private void addNewGameToList(Integer newGameId) {
+        Kalah game = new Kalah();
+        game.setGameNumber(newGameId);
+        getGames().add(game);
     }
 
     public void makeMove(Integer gameIndex, Integer pit) throws GameNotFoundException, IllegalKalahMoveException, FinishedGameException {

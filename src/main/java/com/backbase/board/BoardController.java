@@ -19,7 +19,6 @@ public class BoardController {
     NewGame createNewGame() {
         String serverPort = environment.getProperty("local.server.port");
         String host = InetAddress.getLoopbackAddress().getHostName();
-        NewGame newGame = board.createNewGame(host, serverPort);
-        return newGame;
+        return board.createNewGame(host, serverPort);
     }
 }
