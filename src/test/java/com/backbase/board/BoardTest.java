@@ -8,6 +8,7 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class BoardTest {
 
@@ -61,5 +62,13 @@ class BoardTest {
 
         assertEquals(board.getGames().size(), 1);
         assertEquals(board.getGames().get(0).getGameNumber(), Integer.valueOf(1));
+    }
+
+    @Test
+    public void assertThatBoardThrowGameNotFoundOnInvalidID() {
+        Board board = new Board();
+        assertThrows(GameNotFoundException.class, () -> {
+            board.makeMove(1);
+        });
     }
 }
