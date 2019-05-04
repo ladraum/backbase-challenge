@@ -188,4 +188,19 @@ public class KalahInteractionTest {
 
         checkFinalState(Arrays.asList(1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 3), game);
     }
+
+    @Test
+    public void assertThatGameWontChangeWhenMovingZeroSeeds() throws Exception {
+        Map<Integer, Integer> status = createClearStatus();
+        status.put(1, 3);
+        status.put(4, 5);
+        status.put(9, 11);
+        status.put(13, 2);
+        Kalah game = new Kalah();
+        game.setStatus(status);
+
+        game.playMove(2);
+
+        checkFinalState(Arrays.asList(3, 0, 0, 5, 0, 0, 0, 0, 11, 0, 0, 0, 2, 0), game);
+    }
 }
