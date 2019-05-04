@@ -33,17 +33,17 @@ public class Kalah {
     }
 
     private void sow(Integer pit) {
+        Integer houseToSkip = getHouseToSkipFromOtherPlayer(pit);
         Integer seedsOnFinalPit;
         do {
-            pit = sowSeedsFromPit(pit);
+            pit = sowSeedsFromPit(pit, houseToSkip);
             seedsOnFinalPit = getStatus().get(pit);
         } while (seedsOnFinalPit != 1);
     }
 
-    private Integer sowSeedsFromPit(Integer pit) {
+    private Integer sowSeedsFromPit(Integer pit, Integer houseToSkip) {
         Map<Integer, Integer> status = getStatus();
         Integer seedsToMove = getSeedsToMove(pit);
-        Integer houseToSkip = getHouseToSkipFromOtherPlayer(pit);
         clearPit(pit);
         while (seedsToMove != 0) {
             pit = seedNextPit(pit, houseToSkip);
