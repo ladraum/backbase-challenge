@@ -67,7 +67,7 @@ class BoardTest {
     public void assertThatBoardThrowGameNotFoundOnEmptyList() {
         Board board = new Board();
         assertThrows(GameNotFoundException.class, () -> {
-            board.makeMove(1, 5);
+            board.makeMove(1, 5, "host", "port");
         });
     }
 
@@ -76,7 +76,7 @@ class BoardTest {
         Board board = new Board();
         board.createNewGame("host", "port");
 
-        board.makeMove(1, 5);
+        board.makeMove(1, 5, "host", "port");
 
         Kalah game = board.getGames().get(0);
 
@@ -103,7 +103,7 @@ class BoardTest {
         Board board = new Board();
         board.createNewGame("host", "port");
         assertThrows(GameNotFoundException.class, () -> {
-            board.makeMove(3, 5);
+            board.makeMove(3, 5, "host", "port");
         });
     }
 
@@ -112,7 +112,7 @@ class BoardTest {
         Board board = new Board();
         board.createNewGame("host", "port");
 
-        assertNotNull(board.makeMove(1, 5));
+        assertNotNull(board.makeMove(1, 5, "host", "port"));
     }
 
     @Test
@@ -120,7 +120,7 @@ class BoardTest {
         Board board = new Board();
         board.createNewGame("host", "port");
 
-        assertThat(board.makeMove(1, 5), instanceOf(GameStatus.class));
+        assertThat(board.makeMove(1, 5, "host", "port"), instanceOf(GameStatus.class));
     }
 
     @Test
@@ -128,7 +128,7 @@ class BoardTest {
         Board board = new Board();
         board.createNewGame("host", "port");
 
-        GameStatus gameStatus = board.makeMove(1, 5);
+        GameStatus gameStatus = board.makeMove(1, 5, "host", "port");
 
         assertEquals(gameStatus.getId(), Integer.valueOf(1));
         assertEquals(gameStatus.getUrl(), "http://host:port/games/1");

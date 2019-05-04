@@ -29,7 +29,7 @@ public class Board {
         getGames().add(game);
     }
 
-    public GameStatus makeMove(Integer gameIndex, Integer pit) throws GameNotFoundException, IllegalKalahMoveException, FinishedGameException {
+    public GameStatus makeMove(Integer gameIndex, Integer pit, String host, String port) throws GameNotFoundException, IllegalKalahMoveException, FinishedGameException {
         Kalah game;
         try {
             game = getGames().get(gameIndex - 1);
@@ -37,6 +37,8 @@ public class Board {
             throw new GameNotFoundException();
         }
         game.playMove(pit);
-        return new GameStatus();
+
+        String url = String.format("http://%s:%s/games/%d", host, port, game.getGameNumber());
+        return new GameStatus(game, url);
     }
 }
