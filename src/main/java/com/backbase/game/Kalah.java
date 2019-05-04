@@ -24,15 +24,25 @@ public class Kalah {
 
     public Kalah playMove(Integer pit) throws IllegalKalahMoveException, FinishedGameException {
         validateMoveNotInHouse(pit);
-        if(isGameFinished()) {
-            throw new FinishedGameException();
-        }
+        validateMoveInFinishedGame();
         sow(pit);
         return this;
     }
 
     public boolean isGameFinished() {
         return noSeedsOnPlayerOneSide() || noSeedsOnPlayerTwoSide();
+    }
+
+    private void validateMoveNotInHouse(Integer pit) throws IllegalKalahMoveException {
+        if (Integer.valueOf(7).equals(pit) || Integer.valueOf(14).equals(pit)) {
+            throw new IllegalKalahMoveException();
+        }
+    }
+
+    private void validateMoveInFinishedGame() throws FinishedGameException {
+        if(isGameFinished()) {
+            throw new FinishedGameException();
+        }
     }
 
     private void sow(Integer pit) {
@@ -65,12 +75,6 @@ public class Kalah {
             return 7;
         }
         return 14;
-    }
-
-    private void validateMoveNotInHouse(Integer pit) throws IllegalKalahMoveException {
-        if (Integer.valueOf(7).equals(pit) || Integer.valueOf(14).equals(pit)) {
-            throw new IllegalKalahMoveException();
-        }
     }
 
     private Integer getSeedsOnPit(Integer pit) {
