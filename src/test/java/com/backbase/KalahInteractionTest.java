@@ -2,7 +2,9 @@ package com.backbase;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -23,12 +25,16 @@ public class KalahInteractionTest {
 
     @Test
     public void assertThatPlayerCantMoveFromHouseOnSeven() throws Exception {
-        assertThrows(IllegalKalahMoveException.class, () -> {new Kalah().playMove(7);});
+        assertThrows(IllegalKalahMoveException.class, () -> {
+            new Kalah().playMove(7);
+        });
     }
 
     @Test
     public void assertThatPlayerCantMoveFromHouseOnFourteen() throws Exception {
-        assertThrows(IllegalKalahMoveException.class, () -> {new Kalah().playMove(14);});
+        assertThrows(IllegalKalahMoveException.class, () -> {
+            new Kalah().playMove(14);
+        });
     }
 
     @Test
@@ -40,20 +46,13 @@ public class KalahInteractionTest {
 
         game.playMove(3);
 
-        assertEquals(status.get(1), Integer.valueOf(0));
-        assertEquals(status.get(2), Integer.valueOf(0));
-        assertEquals(status.get(3), Integer.valueOf(0));
-        assertEquals(status.get(4), Integer.valueOf(1));
-        assertEquals(status.get(5), Integer.valueOf(0));
-        assertEquals(status.get(6), Integer.valueOf(0));
-        assertEquals(status.get(7), Integer.valueOf(0));
-        assertEquals(status.get(8), Integer.valueOf(0));
-        assertEquals(status.get(9), Integer.valueOf(0));
-        assertEquals(status.get(10), Integer.valueOf(0));
-        assertEquals(status.get(11), Integer.valueOf(0));
-        assertEquals(status.get(12), Integer.valueOf(0));
-        assertEquals(status.get(13), Integer.valueOf(0));
-        assertEquals(status.get(14), Integer.valueOf(0));
+        checkFinalState(Arrays.asList(0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), game);
+    }
+
+    private void checkFinalState(List<Integer> finalStatus, Kalah kalah) {
+        for (int i = 1; i <= 14; i++) {
+            assertEquals(kalah.getStatus().get(i), finalStatus.get(i - 1));
+        }
     }
 
     private Map<Integer, Integer> createClearStatus() {
@@ -74,19 +73,6 @@ public class KalahInteractionTest {
 
         game.playMove(3);
 
-        assertEquals(status.get(1), Integer.valueOf(0));
-        assertEquals(status.get(2), Integer.valueOf(0));
-        assertEquals(status.get(3), Integer.valueOf(0));
-        assertEquals(status.get(4), Integer.valueOf(2));
-        assertEquals(status.get(5), Integer.valueOf(0));
-        assertEquals(status.get(6), Integer.valueOf(0));
-        assertEquals(status.get(7), Integer.valueOf(0));
-        assertEquals(status.get(8), Integer.valueOf(0));
-        assertEquals(status.get(9), Integer.valueOf(0));
-        assertEquals(status.get(10), Integer.valueOf(0));
-        assertEquals(status.get(11), Integer.valueOf(0));
-        assertEquals(status.get(12), Integer.valueOf(0));
-        assertEquals(status.get(13), Integer.valueOf(0));
-        assertEquals(status.get(14), Integer.valueOf(0));
+        checkFinalState(Arrays.asList(0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), game);
     }
 }
