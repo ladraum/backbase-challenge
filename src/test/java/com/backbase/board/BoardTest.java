@@ -35,4 +35,13 @@ class BoardTest {
 
         assertThat(board.createNewGame("host", "port"), instanceOf(NewGame.class));
     }
+
+    @Test
+    public void assertThatNewGameHasIDandURI() {
+        Board board = new Board();
+        NewGame newGame = board.createNewGame("host", "port");
+
+        assertNotNull(newGame.getId());
+        assertNotNull(newGame.getUri());
+    }
 }
