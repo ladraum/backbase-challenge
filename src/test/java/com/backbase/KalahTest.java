@@ -54,4 +54,22 @@ public class KalahTest {
         assertNotNull(status.get(13));
         assertNotNull(status.get(14));
     }
+
+    @Test
+    public void assertThatInitialGamePitsTheRightSeeds() {
+        Map<Integer, Integer> status = new Kalah().getStatus();
+        assertEquals(status.get(1), Integer.valueOf(6));
+        assertEquals(status.get(2), Integer.valueOf(6));
+        assertEquals(status.get(3), Integer.valueOf(6));
+        assertEquals(status.get(4), Integer.valueOf(6));
+        assertEquals(status.get(5), Integer.valueOf(6));
+        assertEquals(status.get(6), Integer.valueOf(6));
+
+        assertEquals(status.get(8), Integer.valueOf(6));
+        assertEquals(status.get(9), Integer.valueOf(6));
+        assertEquals(status.get(10), Integer.valueOf(6));
+        assertEquals(status.get(11), Integer.valueOf(6));
+        assertEquals(status.get(12), Integer.valueOf(6));
+        assertEquals(status.get(13), Integer.valueOf(6));
+    }
 }
