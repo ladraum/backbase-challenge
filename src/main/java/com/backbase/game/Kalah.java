@@ -22,14 +22,14 @@ public class Kalah {
         setStatus(status);
     }
 
-    public boolean isGameFinished() {
-        return false;
-    }
-
     public Kalah playMove(Integer pit) throws IllegalKalahMoveException {
         validateMoveNotInHouse(pit);
         sow(pit);
         return this;
+    }
+
+    public boolean isGameFinished() {
+        return noSeedsOnPlayerInoSide();
     }
 
     private void sow(Integer pit) {
@@ -134,5 +134,13 @@ public class Kalah {
             return 14;
         }
         return 7;
+    }
+
+    private boolean noSeedsOnPlayerInoSide() {
+        Integer seedsOnPlayerSide = 0;
+        for (int i = 1; i <= 7; i++) {
+            seedsOnPlayerSide += getStatus().get(i);
+        }
+        return seedsOnPlayerSide == 0;
     }
 }
