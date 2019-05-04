@@ -19,4 +19,11 @@ class BoardTest {
         List<Kalah> games = new Board().getGames();
         assertEquals(games.size(), 0);
     }
+
+    @Test
+    public void assertThatCreateGameReturnsANewGame() {
+        Board board = new Board();
+
+        assertNotNull(board.createNewGame("host", "port"));
+    }
 }
