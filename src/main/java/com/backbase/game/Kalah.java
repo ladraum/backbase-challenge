@@ -33,15 +33,17 @@ public class Kalah {
     }
 
     private void sow(Integer pit) {
-        Integer houseToSkip = getHouseToSkipFromOtherPlayer(pit);
-        Integer seedsOnFinalPit;
-        do {
-            pit = sowSeedsFromPit(pit, houseToSkip);
-            seedsOnFinalPit = getStatus().get(pit);
-        } while (seedsOnFinalPit != 1);
+        if(getStatus().get(pit) != 0) {
+            Integer houseToSkip = getHouseToSkipFromOtherPlayer(pit);
+            Integer seedsOnFinalPit;
+            do {
+                pit = sowSeedsFromPit(pit, houseToSkip);
+                seedsOnFinalPit = getStatus().get(pit);
+            } while (seedsOnFinalPit != 1);
 
-        if (isLastPitOwned(pit, houseToSkip)) {
-            stealFromOppositePit(pit, houseToSkip);
+            if (isLastPitOwned(pit, houseToSkip)) {
+                stealFromOppositePit(pit, houseToSkip);
+            }
         }
     }
 
