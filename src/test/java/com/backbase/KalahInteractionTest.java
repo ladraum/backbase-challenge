@@ -33,10 +33,7 @@ public class KalahInteractionTest {
 
     @Test
     public void assertThatPlayerCanMoveASingleSeedToTheNextPit() throws Exception {
-        Map<Integer, Integer> status = new HashMap<>();
-        for (int i = 1; i <= 14; i++) {
-            status.put(i, 0);
-        }
+        Map<Integer, Integer> status = createClearStatus();
         status.put(3, 1);
         Kalah game = new Kalah();
         game.setStatus(status);
@@ -47,6 +44,40 @@ public class KalahInteractionTest {
         assertEquals(status.get(2), Integer.valueOf(0));
         assertEquals(status.get(3), Integer.valueOf(0));
         assertEquals(status.get(4), Integer.valueOf(1));
+        assertEquals(status.get(5), Integer.valueOf(0));
+        assertEquals(status.get(6), Integer.valueOf(0));
+        assertEquals(status.get(7), Integer.valueOf(0));
+        assertEquals(status.get(8), Integer.valueOf(0));
+        assertEquals(status.get(9), Integer.valueOf(0));
+        assertEquals(status.get(10), Integer.valueOf(0));
+        assertEquals(status.get(11), Integer.valueOf(0));
+        assertEquals(status.get(12), Integer.valueOf(0));
+        assertEquals(status.get(13), Integer.valueOf(0));
+        assertEquals(status.get(14), Integer.valueOf(0));
+    }
+
+    private Map<Integer, Integer> createClearStatus() {
+        Map<Integer, Integer> status = new HashMap<>();
+        for (int i = 1; i <= 14; i++) {
+            status.put(i, 0);
+        }
+        return status;
+    }
+
+    @Test
+    public void assertThatPlayerCanMoveASingleSeedToTheNextPitWithSeeds() throws Exception {
+        Map<Integer, Integer> status = createClearStatus();
+        status.put(3, 1);
+        status.put(4, 1);
+        Kalah game = new Kalah();
+        game.setStatus(status);
+
+        game.playMove(3);
+
+        assertEquals(status.get(1), Integer.valueOf(0));
+        assertEquals(status.get(2), Integer.valueOf(0));
+        assertEquals(status.get(3), Integer.valueOf(0));
+        assertEquals(status.get(4), Integer.valueOf(2));
         assertEquals(status.get(5), Integer.valueOf(0));
         assertEquals(status.get(6), Integer.valueOf(0));
         assertEquals(status.get(7), Integer.valueOf(0));
