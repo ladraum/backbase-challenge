@@ -29,7 +29,7 @@ public class Kalah {
     }
 
     public boolean isGameFinished() {
-        return noSeedsOnPlayerInoSide();
+        return noSeedsOnPlayerOneSide() || noSeedsOnPlayerTwoSide();
     }
 
     private void sow(Integer pit) {
@@ -136,9 +136,17 @@ public class Kalah {
         return 7;
     }
 
-    private boolean noSeedsOnPlayerInoSide() {
+    private boolean noSeedsOnPlayerOneSide() {
         Integer seedsOnPlayerSide = 0;
         for (int i = 1; i <= 7; i++) {
+            seedsOnPlayerSide += getStatus().get(i);
+        }
+        return seedsOnPlayerSide == 0;
+    }
+
+    private boolean noSeedsOnPlayerTwoSide() {
+        Integer seedsOnPlayerSide = 0;
+        for (int i = 8; i <= 14; i++) {
             seedsOnPlayerSide += getStatus().get(i);
         }
         return seedsOnPlayerSide == 0;
