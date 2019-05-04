@@ -6,10 +6,10 @@ import lombok.Setter;
 import java.util.HashMap;
 import java.util.Map;
 
+@Getter
+@Setter
 public class Kalah {
     private Integer gameNumber;
-    @Getter
-    @Setter
     private Map<Integer, Integer> status;
 
     public Kalah() {
