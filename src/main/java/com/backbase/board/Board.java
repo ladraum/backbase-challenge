@@ -12,7 +12,7 @@ public class Board {
     @Getter
     List<Kalah> games = new ArrayList<>();
 
-    public Object createNewGame(String host, String port) {
-        return new Object();
+    public NewGame createNewGame(String host, String port) {
+        return new NewGame();
     }
 }
