@@ -151,4 +151,18 @@ public class KalahInteractionTest {
 
         checkFinalState(Arrays.asList(0, 0, 0, 3, 4, 1, 1, 0, 1, 1, 1, 1, 0, 0), game);
     }
+
+    @Test
+    public void assertThatPlayerTwoShouldSowAgainIfEndPitHasSeeds() throws Exception {
+        Map<Integer, Integer> status = createClearStatus();
+        status.put(9, 3);
+        status.put(13, 4);
+        status.put(3, 3);
+        Kalah game = new Kalah();
+        game.setStatus(status);
+
+        game.playMove(13);
+
+        checkFinalState(Arrays.asList(1, 1, 0, 1, 1, 1, 0, 1, 3, 0, 0, 0, 0, 1), game);
+    }
 }
