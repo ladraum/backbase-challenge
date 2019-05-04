@@ -122,4 +122,30 @@ class BoardTest {
 
         assertThat(board.makeMove(1, 5), instanceOf(GameStatus.class));
     }
+
+    @Test
+    public void assertThatBoardReturnGameStatusWithPitsInfo() throws Exception {
+        Board board = new Board();
+        board.createNewGame("host", "port");
+
+        GameStatus gameStatus = board.makeMove(1, 5);
+
+        assertEquals(gameStatus.getId(), Integer.valueOf(1));
+        assertEquals(gameStatus.getUrl(), "http://host:port/games/1");
+
+        assertEquals(gameStatus.getStatus().get(1), Integer.valueOf(7));
+        assertEquals(gameStatus.getStatus().get(2), Integer.valueOf(7));
+        assertEquals(gameStatus.getStatus().get(3), Integer.valueOf(7));
+        assertEquals(gameStatus.getStatus().get(4), Integer.valueOf(7));
+        assertEquals(gameStatus.getStatus().get(5), Integer.valueOf(0));
+        assertEquals(gameStatus.getStatus().get(6), Integer.valueOf(7));
+        assertEquals(gameStatus.getStatus().get(7), Integer.valueOf(9));
+        assertEquals(gameStatus.getStatus().get(8), Integer.valueOf(7));
+        assertEquals(gameStatus.getStatus().get(9), Integer.valueOf(7));
+        assertEquals(gameStatus.getStatus().get(10), Integer.valueOf(7));
+        assertEquals(gameStatus.getStatus().get(11), Integer.valueOf(0));
+        assertEquals(gameStatus.getStatus().get(12), Integer.valueOf(0));
+        assertEquals(gameStatus.getStatus().get(13), Integer.valueOf(7));
+        assertEquals(gameStatus.getStatus().get(14), Integer.valueOf(0));
+    }
 }
