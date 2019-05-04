@@ -59,7 +59,7 @@ public class Kalah {
             do {
                 pit = sowSeedsFromPit(pit, houseToSkip);
                 seedsOnFinalPit = getStatus().get(pit);
-            } while (seedsOnFinalPit != 1);
+            } while (seedsOnFinalPit != 1 && pit != 7 && pit != 14);
 
             stealPitWhenLastPitIsOwned(pit, houseToSkip);
         }
