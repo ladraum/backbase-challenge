@@ -218,4 +218,11 @@ public class KalahInteractionTest {
             new Kalah().playMove(0);
         });
     }
+
+    @Test
+    public void assertThatPitCantBeHigherThan14() throws Exception {
+        assertThrows(IllegalKalahMoveException.class, () -> {
+            new Kalah().playMove(15);
+        });
+    }
 }

@@ -39,7 +39,7 @@ public class Kalah {
             throw new IllegalKalahMoveException();
         }
     }
-    
+
     private void validateMoveNotInHouse(Integer pit) throws IllegalKalahMoveException {
         if (Integer.valueOf(7).equals(pit) || Integer.valueOf(14).equals(pit)) {
             throw new IllegalKalahMoveException();
