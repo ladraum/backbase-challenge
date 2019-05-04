@@ -1,5 +1,6 @@
-package com.backbase;
+package com.backbase.game;
 
+import com.backbase.game.Kalah;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

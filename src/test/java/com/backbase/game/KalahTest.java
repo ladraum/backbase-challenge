@@ -1,8 +1,8 @@
-package com.backbase;
+package com.backbase.game;
 
+import com.backbase.game.Kalah;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;

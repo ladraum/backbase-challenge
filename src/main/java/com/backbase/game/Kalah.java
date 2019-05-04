@@ -1,4 +1,4 @@
-package com.backbase;
+package com.backbase.game;
 
 import lombok.Getter;
 import lombok.Setter;
