@@ -99,4 +99,13 @@ class BoardTest {
         assertEquals(game.getStatus().get(13), Integer.valueOf(7));
         assertEquals(game.getStatus().get(14), Integer.valueOf(0));
     }
+
+    @Test
+    public void assertThatBoardThrowGameNotFoundOnNonExistingGame() {
+        Board board = new Board();
+        board.createNewGame("host", "port");
+        assertThrows(GameNotFoundException.class, () -> {
+            board.makeMove(3, 5);
+        });
+    }
 }
