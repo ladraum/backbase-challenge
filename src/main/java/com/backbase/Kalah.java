@@ -36,7 +36,8 @@ public class Kalah {
         Map<Integer, Integer> status = getStatus();
         Integer seedsToMove = getSeedsToMove(pit);
         clearPit(pit);
-        status.put(pit + 1, seedsToMove);
+        Integer nextPit = pit + 1;
+        status.put(nextPit, status.get(nextPit) + seedsToMove);
     }
 
     private void validateMoveNotInHouse(Integer pit) throws IllegalKalahMoveException {
