@@ -35,16 +35,20 @@ public class Kalah {
     private void sowSeedsFromPit(Integer pit) {
         Map<Integer, Integer> status = getStatus();
         Integer seedsToMove = getSeedsToMove(pit);
+        Integer houseToSkip = 14;
+        if (pit > 7) {
+            houseToSkip = 7;
+        }
         clearPit(pit);
-        while(seedsToMove != 0) {
-            pit = seedNextPit(pit);
+        while (seedsToMove != 0) {
+            pit = seedNextPit(pit, houseToSkip);
             seedsToMove--;
         }
         setStatus(status);
     }
 
     private void validateMoveNotInHouse(Integer pit) throws IllegalKalahMoveException {
-        if(Integer.valueOf(7).equals(pit) || Integer.valueOf(14).equals(pit)) {
+        if (Integer.valueOf(7).equals(pit) || Integer.valueOf(14).equals(pit)) {
             throw new IllegalKalahMoveException();
         }
     }
@@ -57,12 +61,21 @@ public class Kalah {
         getStatus().put(pit, 0);
     }
 
-    private Integer seedNextPit(Integer pit) {
+    private Integer seedNextPit(Integer pit, Integer houseToSkip) {
         Map<Integer, Integer> status = getStatus();
         pit++;
-        if(pit == 15) {
+        if (pit == 15) {
             pit = 1;
         }
+
+        if(pit == houseToSkip) {
+            if(pit == 14) {
+                pit = 1;
+            } else {
+                pit = 8;
+            }
+        }
+
         status.put(pit, status.get(pit) + 1);
         setStatus(status);
         return pit;
