@@ -23,6 +23,9 @@ public class Kalah {
     }
 
     public Kalah playMove(Integer pit) throws IllegalKalahMoveException, FinishedGameException {
+        if(pit < 1) {
+            throw new IllegalKalahMoveException();
+        }
         validateMoveNotInHouse(pit);
         validateMoveInFinishedGame();
         sow(pit);
