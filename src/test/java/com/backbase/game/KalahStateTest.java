@@ -29,4 +29,20 @@ public class KalahStateTest {
 
         assertTrue(game.isGameFinished());
     }
+
+    @Test
+    public void assertThatGameIsFinishedWhenNoSeedsOnPlayerTwoSide() {
+        Kalah game = new Kalah();
+        Map<Integer, Integer> status = game.getStatus();
+        status.put(8, 0);
+        status.put(9, 0);
+        status.put(10, 0);
+        status.put(11, 0);
+        status.put(12, 0);
+        status.put(13, 0);
+        status.put(14, 0);
+        game.setStatus(status);
+
+        assertTrue(game.isGameFinished());
+    }
 }
