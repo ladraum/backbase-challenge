@@ -112,4 +112,16 @@ public class KalahInteractionTest {
 
         checkFinalState(Arrays.asList(1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1), game);
     }
+
+    @Test
+    public void assertThatPlayerOneCanLoopOverBoard_DontSowPlayerTwoouse_StealFromPlayerTwo() throws Exception {
+        Map<Integer, Integer> status = createClearStatus();
+        status.put(5, 10);
+        Kalah game = new Kalah();
+        game.setStatus(status);
+
+        game.playMove(5);
+
+        checkFinalState(Arrays.asList(1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0), game);
+    }
 }
