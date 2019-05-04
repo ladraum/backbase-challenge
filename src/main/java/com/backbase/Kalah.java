@@ -28,6 +28,11 @@ public class Kalah {
 
     public Kalah playMove(Integer pit) throws IllegalKalahMoveException {
         validateMoveNotInHouse(pit);
+        Map<Integer, Integer> status = getStatus();
+        Integer seedsToMove = status.get(pit);
+        status.put(pit, 0);
+        status.put(pit + 1, seedsToMove);
+        setStatus(status);
         return this;
     }
 
