@@ -27,9 +27,13 @@ public class Kalah {
     }
 
     public Kalah playMove(Integer pit) throws IllegalKalahMoveException {
+        validateMoveNotInHouse(pit);
+        return this;
+    }
+
+    private void validateMoveNotInHouse(Integer pit) throws IllegalKalahMoveException {
         if(Integer.valueOf(7).equals(pit) || Integer.valueOf(14).equals(pit)) {
             throw new IllegalKalahMoveException();
         }
-        return this;
     }
 }
