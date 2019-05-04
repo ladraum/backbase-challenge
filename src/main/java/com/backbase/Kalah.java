@@ -21,4 +21,8 @@ public class Kalah {
         status.put(14, 0);
         setStatus(status);
     }
+
+    public boolean isGameFinished() {
+        return false;
+    }
 }
