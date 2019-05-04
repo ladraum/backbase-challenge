@@ -28,17 +28,28 @@ public class Kalah {
 
     public Kalah playMove(Integer pit) throws IllegalKalahMoveException {
         validateMoveNotInHouse(pit);
-        Map<Integer, Integer> status = getStatus();
-        Integer seedsToMove = status.get(pit);
-        status.put(pit, 0);
-        status.put(pit + 1, seedsToMove);
-        setStatus(status);
+        sowSeedsFromPit(pit);
         return this;
+    }
+
+    private void sowSeedsFromPit(Integer pit) {
+        Map<Integer, Integer> status = getStatus();
+        Integer seedsToMove = getSeedsToMove(pit);
+        clearPit(pit);
+        status.put(pit + 1, seedsToMove);
     }
 
     private void validateMoveNotInHouse(Integer pit) throws IllegalKalahMoveException {
         if(Integer.valueOf(7).equals(pit) || Integer.valueOf(14).equals(pit)) {
             throw new IllegalKalahMoveException();
         }
+    }
+
+    private Integer getSeedsToMove(Integer pit) {
+        return getStatus().get(pit);
+    }
+
+    private void clearPit(Integer pit) {
+        getStatus().put(pit, 0);
     }
 }
