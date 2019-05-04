@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class KalahStateTest {
 
@@ -44,5 +43,24 @@ public class KalahStateTest {
         game.setStatus(status);
 
         assertTrue(game.isGameFinished());
+    }
+
+    @Test
+    public void assertThatPlayerCantPlayOnFinishedGame() {
+        Kalah game = new Kalah();
+        Map<Integer, Integer> status = game.getStatus();
+        status.put(0, 0);
+        status.put(1, 0);
+        status.put(2, 0);
+        status.put(3, 0);
+        status.put(4, 0);
+        status.put(5, 0);
+        status.put(6, 0);
+        game.setStatus(status);
+
+        assertThrows(FinishedGameException.class, () -> {
+            new Kalah().playMove(3);
+        });
+
     }
 }
