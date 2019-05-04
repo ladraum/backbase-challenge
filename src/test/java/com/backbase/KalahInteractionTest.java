@@ -75,4 +75,16 @@ public class KalahInteractionTest {
 
         checkFinalState(Arrays.asList(0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), game);
     }
+
+    @Test
+    public void assertThatPlayerCanMoveTwoSeedsToFollowingPits() throws Exception {
+        Map<Integer, Integer> status = createClearStatus();
+        status.put(3, 2);
+        Kalah game = new Kalah();
+        game.setStatus(status);
+
+        game.playMove(3);
+
+        checkFinalState(Arrays.asList(0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0), game);
+    }
 }
