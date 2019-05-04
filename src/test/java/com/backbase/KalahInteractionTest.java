@@ -37,18 +37,6 @@ public class KalahInteractionTest {
         });
     }
 
-    @Test
-    public void assertThatPlayerCanMoveASingleSeedToTheNextPit() throws Exception {
-        Map<Integer, Integer> status = createClearStatus();
-        status.put(3, 1);
-        Kalah game = new Kalah();
-        game.setStatus(status);
-
-        game.playMove(3);
-
-        checkFinalState(Arrays.asList(0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), game);
-    }
-
     private void checkFinalState(List<Integer> finalStatus, Kalah kalah) {
         assertEquals(kalah.getStatus().get(1), finalStatus.get(0));
         assertEquals(kalah.getStatus().get(2), finalStatus.get(1));
@@ -84,7 +72,7 @@ public class KalahInteractionTest {
 
         game.playMove(3);
 
-        checkFinalState(Arrays.asList(0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0), game);
+        checkFinalState(Arrays.asList(0, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0), game);
     }
 
     @Test
@@ -96,7 +84,7 @@ public class KalahInteractionTest {
 
         game.playMove(3);
 
-        checkFinalState(Arrays.asList(0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0), game);
+        checkFinalState(Arrays.asList(0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0), game);
     }
 
     @Test
@@ -109,7 +97,7 @@ public class KalahInteractionTest {
 
         game.playMove(3);
 
-        checkFinalState(Arrays.asList(0, 0, 0, 1, 8, 1, 0, 0, 0, 0, 0, 0, 0, 0), game);
+        checkFinalState(Arrays.asList(0, 0, 0, 1, 8, 0, 1, 0, 0, 0, 0, 0, 0, 0), game);
     }
 
     @Test
@@ -133,7 +121,7 @@ public class KalahInteractionTest {
 
         game.playMove(5);
 
-        checkFinalState(Arrays.asList(1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0), game);
+        checkFinalState(Arrays.asList(1, 0, 0, 0, 0, 1, 3, 1, 0, 1, 1, 1, 1, 0), game);
     }
 
     @Test
@@ -145,7 +133,7 @@ public class KalahInteractionTest {
 
         game.playMove(12);
 
-        checkFinalState(Arrays.asList(1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1), game);
+        checkFinalState(Arrays.asList(1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 3), game);
     }
 
     @Test
@@ -174,7 +162,7 @@ public class KalahInteractionTest {
 
         game.playMove(13);
 
-        checkFinalState(Arrays.asList(1, 1, 0, 1, 1, 1, 0, 1, 3, 0, 0, 0, 0, 1), game);
+        checkFinalState(Arrays.asList(0, 1, 0, 1, 1, 1, 0, 0, 3, 0, 0, 0, 0, 3), game);
     }
 
     @Test

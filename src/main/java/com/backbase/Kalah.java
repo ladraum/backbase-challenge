@@ -39,11 +39,15 @@ public class Kalah {
             pit = sowSeedsFromPit(pit, houseToSkip);
             seedsOnFinalPit = getStatus().get(pit);
         } while (seedsOnFinalPit != 1);
+
+        if (isLastPitOwned(pit, houseToSkip)) {
+            stealFromOppositePit(pit, houseToSkip);
+        }
     }
 
     private Integer sowSeedsFromPit(Integer pit, Integer houseToSkip) {
         Map<Integer, Integer> status = getStatus();
-        Integer seedsToMove = getSeedsToMove(pit);
+        Integer seedsToMove = getSeedsOnPit(pit);
         clearPit(pit);
         while (seedsToMove != 0) {
             pit = seedNextPit(pit, houseToSkip);
@@ -66,7 +70,7 @@ public class Kalah {
         }
     }
 
-    private Integer getSeedsToMove(Integer pit) {
+    private Integer getSeedsOnPit(Integer pit) {
         return getStatus().get(pit);
     }
 
@@ -84,7 +88,7 @@ public class Kalah {
 
     private Integer getNextNotHousePit(Integer pit, Integer houseToSkip) {
         pit = getNextPit(pit);
-        if(pit == houseToSkip) {
+        if (pit == houseToSkip) {
             pit = getNextPit(pit);
         }
         return pit;
@@ -96,5 +100,39 @@ public class Kalah {
             pit = 1;
         }
         return pit;
+    }
+
+    private boolean isLastPitOwned(Integer pit, Integer houseToSkip) {
+        if (houseToSkip == 14) {
+            return pit < 7;
+        }
+        return pit > 7 && pit < 14;
+    }
+
+    private void stealFromOppositePit(Integer pit, Integer houseToSkip) {
+        Integer oppositePit = getOppositePit(pit, houseToSkip);
+        Integer seedsOnOppositePit = getSeedsOnPit(oppositePit);
+        Integer ownHouse = getOwnHouse(houseToSkip);
+
+        clearPit(pit);
+        clearPit(oppositePit);
+
+        Map<Integer, Integer> status = getStatus();
+        status.put(ownHouse, status.get(ownHouse) + seedsOnOppositePit + 1);
+        setStatus(status);
+    }
+
+    private Integer getOppositePit(Integer pit, Integer houseToSkip) {
+        if (houseToSkip == 7) {
+            return pit - 7;
+        }
+        return pit + 7;
+    }
+
+    private Integer getOwnHouse(Integer houseToSkip) {
+        if (houseToSkip == 7) {
+            return 14;
+        }
+        return 7;
     }
 }
