@@ -19,4 +19,9 @@ public class KalahInteractionTest {
     public void assertThatPlayerCanPlayItsTurn() {
         assertThat(new Kalah().playMove(1), instanceOf(Kalah.class));
     }
+
+    @Test
+    public void assertThatPlayerCantMoveFromHouseOnSeven() {
+        assertThrows(IllegalKalahMoveException.class, new Kalah().playMove(7));
+    }
 }
