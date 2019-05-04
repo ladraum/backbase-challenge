@@ -23,9 +23,7 @@ public class Kalah {
     }
 
     public Kalah playMove(Integer pit) throws IllegalKalahMoveException, FinishedGameException {
-        if(pit < 1) {
-            throw new IllegalKalahMoveException();
-        }
+        validateMoveInsideBoundaries(pit);
         validateMoveNotInHouse(pit);
         validateMoveInFinishedGame();
         sow(pit);
@@ -36,6 +34,12 @@ public class Kalah {
         return noSeedsOnPlayerOneSide() || noSeedsOnPlayerTwoSide();
     }
 
+    private void validateMoveInsideBoundaries(Integer pit) throws IllegalKalahMoveException {
+        if(pit < 1) {
+            throw new IllegalKalahMoveException();
+        }
+    }
+    
     private void validateMoveNotInHouse(Integer pit) throws IllegalKalahMoveException {
         if (Integer.valueOf(7).equals(pit) || Integer.valueOf(14).equals(pit)) {
             throw new IllegalKalahMoveException();
