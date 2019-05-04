@@ -35,7 +35,7 @@ public class Kalah {
     }
 
     private void validateMoveInsideBoundaries(Integer pit) throws IllegalKalahMoveException {
-        if(pit < 1) {
+        if(pit < 1 || pit > 14) {
             throw new IllegalKalahMoveException();
         }
     }
