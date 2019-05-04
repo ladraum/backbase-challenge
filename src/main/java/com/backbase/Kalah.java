@@ -35,16 +35,20 @@ public class Kalah {
     private void sowSeedsFromPit(Integer pit) {
         Map<Integer, Integer> status = getStatus();
         Integer seedsToMove = getSeedsToMove(pit);
-        Integer houseToSkip = 14;
-        if (pit > 7) {
-            houseToSkip = 7;
-        }
+        Integer houseToSkip = getHouseToSkipFromOtherPlayer(pit);
         clearPit(pit);
         while (seedsToMove != 0) {
             pit = seedNextPit(pit, houseToSkip);
             seedsToMove--;
         }
         setStatus(status);
+    }
+
+    private Integer getHouseToSkipFromOtherPlayer(Integer pit) {
+        if (pit > 7) {
+            return 7;
+        }
+        return 14;
     }
 
     private void validateMoveNotInHouse(Integer pit) throws IllegalKalahMoveException {
