@@ -14,7 +14,7 @@ public class Kalah {
 
     public Kalah() {
         Map<Integer, Integer> status = new HashMap<>();
-        for (int i = 0; i < 14; i++) {
+        for (int i = 1; i <= 14; i++) {
             status.put(i, 0);
         }
         setStatus(status);
