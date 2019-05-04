@@ -211,4 +211,11 @@ public class KalahInteractionTest {
 
         checkFinalState(Arrays.asList(3, 0, 0, 5, 0, 0, 0, 0, 11, 0, 0, 0, 2, 0), game);
     }
+
+    @Test
+    public void assertThatPitCantBeLowerThan1() throws Exception {
+        assertThrows(IllegalKalahMoveException.class, () -> {
+            new Kalah().playMove(0);
+        });
+    }
 }
