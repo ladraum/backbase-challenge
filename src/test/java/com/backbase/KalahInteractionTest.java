@@ -14,4 +14,9 @@ public class KalahInteractionTest {
     public void assertThatGameStartNotFinished() {
         assertNotNull(new Kalah().isGameFinished());
     }
+
+    @Test
+    public void assertThatPlayerCanPlayItsTurn() {
+        assertThat(new Kalah().playMove(1), instanceOf(Kalah.class));
+    }
 }
