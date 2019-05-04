@@ -53,4 +53,13 @@ class BoardTest {
         assertEquals(newGame.getId(), Integer.valueOf(1));
         assertEquals(newGame.getUri(), "http://host:port/games/1");
     }
+
+    @Test
+    public void assertThatNewGamesAreLinkedToBoard() {
+        Board board = new Board();
+        board.createNewGame("host", "port");
+
+        assertEquals(board.getGames().size(), 1);
+        assertEquals(board.getGames().get(0).getGameNumber(), Integer.valueOf(1));
+    }
 }
