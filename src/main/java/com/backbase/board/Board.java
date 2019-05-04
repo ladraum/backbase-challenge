@@ -22,4 +22,8 @@ public class Board {
         String uri = String.format("http://%s:%s/games/%d", host, port, newGameId);
         return new NewGame(newGameId, uri);
     }
+
+    public void makeMove(Integer gameIndex) throws GameNotFoundException {
+        throw new GameNotFoundException();
+    }
 }
