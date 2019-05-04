@@ -41,9 +41,7 @@ public class Kalah {
                 seedsOnFinalPit = getStatus().get(pit);
             } while (seedsOnFinalPit != 1);
 
-            if (isLastPitOwned(pit, houseToSkip)) {
-                stealFromOppositePit(pit, houseToSkip);
-            }
+            stealPitWhenLastPitIsOwned(pit, houseToSkip);
         }
     }
 
@@ -102,6 +100,12 @@ public class Kalah {
             pit = 1;
         }
         return pit;
+    }
+
+    private void stealPitWhenLastPitIsOwned(Integer pit, Integer houseToSkip) {
+        if (isLastPitOwned(pit, houseToSkip)) {
+            stealFromOppositePit(pit, houseToSkip);
+        }
     }
 
     private boolean isLastPitOwned(Integer pit, Integer houseToSkip) {
