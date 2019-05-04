@@ -9,6 +9,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 
 class BoardTest {
 
@@ -65,10 +66,37 @@ class BoardTest {
     }
 
     @Test
-    public void assertThatBoardThrowGameNotFoundOnInvalidID() {
+    public void assertThatBoardThrowGameNotFoundOnEmptyList() {
         Board board = new Board();
         assertThrows(GameNotFoundException.class, () -> {
-            board.makeMove(1);
+            board.makeMove(1, 5);
         });
+    }
+
+    @Test
+    public void assertThatBoardCanMoveOnGame() throws Exception {
+        Board board = new Board();
+        board.createNewGame("host", "port");
+
+        board.makeMove(1, 5);
+
+        Kalah game = board.getGames().get(0);
+
+        assertEquals(game.getGameNumber(), Integer.valueOf(1));
+
+        assertEquals(game.getStatus().get(1), Integer.valueOf(7));
+        assertEquals(game.getStatus().get(2), Integer.valueOf(7));
+        assertEquals(game.getStatus().get(3), Integer.valueOf(7));
+        assertEquals(game.getStatus().get(4), Integer.valueOf(7));
+        assertEquals(game.getStatus().get(5), Integer.valueOf(0));
+        assertEquals(game.getStatus().get(6), Integer.valueOf(7));
+        assertEquals(game.getStatus().get(7), Integer.valueOf(9));
+        assertEquals(game.getStatus().get(8), Integer.valueOf(7));
+        assertEquals(game.getStatus().get(9), Integer.valueOf(7));
+        assertEquals(game.getStatus().get(10), Integer.valueOf(7));
+        assertEquals(game.getStatus().get(11), Integer.valueOf(0));
+        assertEquals(game.getStatus().get(12), Integer.valueOf(0));
+        assertEquals(game.getStatus().get(13), Integer.valueOf(7));
+        assertEquals(game.getStatus().get(14), Integer.valueOf(0));
     }
 }

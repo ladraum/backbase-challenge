@@ -23,7 +23,7 @@ public class Board {
         return new NewGame(newGameId, uri);
     }
 
-    public void makeMove(Integer gameIndex) throws GameNotFoundException {
+    public void makeMove(Integer gameIndex, Integer pit) throws GameNotFoundException {
         throw new GameNotFoundException();
     }
 }
