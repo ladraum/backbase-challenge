@@ -44,4 +44,13 @@ class BoardTest {
         assertNotNull(newGame.getId());
         assertNotNull(newGame.getUri());
     }
+
+    @Test
+    public void assertThatNewGameHasIDOneAndRightUI() {
+        Board board = new Board();
+        NewGame newGame = board.createNewGame("host", "port");
+
+        assertEquals(newGame.getId(), Integer.valueOf(1));
+        assertEquals(newGame.getUri(), "http://host:port/games/1");
+    }
 }
