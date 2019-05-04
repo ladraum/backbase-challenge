@@ -108,4 +108,11 @@ class BoardTest {
             board.makeMove(3, 5);
         });
     }
+    @Test
+    public void assertThatBoardCanReturnStatusOnMove() throws Exception {
+        Board board = new Board();
+        board.createNewGame("host", "port");
+
+        assertNotNull(board.makeMove(1, 5));
+    }
 }
