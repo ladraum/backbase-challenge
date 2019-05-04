@@ -24,4 +24,9 @@ public class KalahInteractionTest {
     public void assertThatPlayerCantMoveFromHouseOnSeven() throws Exception {
         assertThrows(IllegalKalahMoveException.class, () -> {new Kalah().playMove(7);});
     }
+
+    @Test
+    public void assertThatPlayerCantMoveFromHouseOnFourteen() throws Exception {
+        assertThrows(IllegalKalahMoveException.class, () -> {new Kalah().playMove(14);});
+    }
 }
