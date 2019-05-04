@@ -67,24 +67,26 @@ public class KalahInteractionTest {
         Map<Integer, Integer> status = createClearStatus();
         status.put(3, 2);
         status.put(4, 1);
+        status.put(13, 1);
         Kalah game = new Kalah();
         game.setStatus(status);
 
         game.playMove(3);
 
-        checkFinalState(Arrays.asList(0, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0), game);
+        checkFinalState(Arrays.asList(0, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0), game);
     }
 
     @Test
     public void assertThatPlayerCanMoveTwoSeedsToFollowingPits() throws Exception {
         Map<Integer, Integer> status = createClearStatus();
         status.put(3, 2);
+        status.put(13, 1);
         Kalah game = new Kalah();
         game.setStatus(status);
 
         game.playMove(3);
 
-        checkFinalState(Arrays.asList(0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0), game);
+        checkFinalState(Arrays.asList(0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0), game);
     }
 
     @Test
@@ -92,48 +94,52 @@ public class KalahInteractionTest {
         Map<Integer, Integer> status = createClearStatus();
         status.put(3, 3);
         status.put(5, 7);
+        status.put(10, 1);
         Kalah game = new Kalah();
         game.setStatus(status);
 
         game.playMove(3);
 
-        checkFinalState(Arrays.asList(0, 0, 0, 1, 8, 0, 1, 0, 0, 0, 0, 0, 0, 0), game);
+        checkFinalState(Arrays.asList(0, 0, 0, 1, 8, 0, 1, 0, 0, 1, 0, 0, 0, 0), game);
     }
 
     @Test
     public void assertThatPlayerTwoCanSeedOnPlayerOneSide() throws Exception {
         Map<Integer, Integer> status = createClearStatus();
         status.put(13, 3);
+        status.put(6, 1);
         Kalah game = new Kalah();
         game.setStatus(status);
 
         game.playMove(13);
 
-        checkFinalState(Arrays.asList(1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1), game);
+        checkFinalState(Arrays.asList(1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1), game);
     }
 
     @Test
     public void assertThatPlayerOneCanLoopOverBoard_DontSowPlayerTwoHouse() throws Exception {
         Map<Integer, Integer> status = createClearStatus();
         status.put(5, 10);
+        status.put(13, 1);
         Kalah game = new Kalah();
         game.setStatus(status);
 
         game.playMove(5);
 
-        checkFinalState(Arrays.asList(1, 0, 0, 0, 0, 1, 3, 1, 0, 1, 1, 1, 1, 0), game);
+        checkFinalState(Arrays.asList(1, 0, 0, 0, 0, 1, 3, 1, 0, 1, 1, 1, 2, 0), game);
     }
 
     @Test
     public void assertThatPlayerTwoCanLoopOverBoard_DontSowPlayerOneHouse() throws Exception {
         Map<Integer, Integer> status = createClearStatus();
+        status.put(3, 1);
         status.put(12, 10);
         Kalah game = new Kalah();
         game.setStatus(status);
 
         game.playMove(12);
 
-        checkFinalState(Arrays.asList(1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 3), game);
+        checkFinalState(Arrays.asList(1, 0, 2, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 3), game);
     }
 
     @Test
@@ -169,24 +175,26 @@ public class KalahInteractionTest {
     public void assertThatPlayerOneStealsFromPlayerTwoWhenOnOwnEmptyPit() throws Exception {
         Map<Integer, Integer> status = createClearStatus();
         status.put(6, 10);
+        status.put(13, 1);
         Kalah game = new Kalah();
         game.setStatus(status);
 
         game.playMove(6);
 
-        checkFinalState(Arrays.asList(1, 1, 0, 0, 0, 0, 3, 1, 1, 0, 1, 1, 1, 0), game);
+        checkFinalState(Arrays.asList(1, 1, 0, 0, 0, 0, 3, 1, 1, 0, 1, 1, 2, 0), game);
     }
 
     @Test
     public void assertThatPlayerTwoStealsFromPlayerOneWhenOnOwnEmptyPit() throws Exception {
         Map<Integer, Integer> status = createClearStatus();
+        status.put(2, 1);
         status.put(13, 10);
         Kalah game = new Kalah();
         game.setStatus(status);
 
         game.playMove(13);
 
-        checkFinalState(Arrays.asList(1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 3), game);
+        checkFinalState(Arrays.asList(1, 2, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 3), game);
     }
 
     @Test

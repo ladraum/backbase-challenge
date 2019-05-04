@@ -22,8 +22,11 @@ public class Kalah {
         setStatus(status);
     }
 
-    public Kalah playMove(Integer pit) throws IllegalKalahMoveException {
+    public Kalah playMove(Integer pit) throws IllegalKalahMoveException, FinishedGameException {
         validateMoveNotInHouse(pit);
+        if(isGameFinished()) {
+            throw new FinishedGameException();
+        }
         sow(pit);
         return this;
     }

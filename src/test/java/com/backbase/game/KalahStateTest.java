@@ -59,7 +59,7 @@ public class KalahStateTest {
         game.setStatus(status);
 
         assertThrows(FinishedGameException.class, () -> {
-            new Kalah().playMove(3);
+            game.playMove(3);
         });
 
     }
