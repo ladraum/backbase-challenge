@@ -8,8 +8,6 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 
 class BoardTest {
 
@@ -108,11 +106,20 @@ class BoardTest {
             board.makeMove(3, 5);
         });
     }
+
+    @Test
+    public void assertThatBoardCanReturnResult() throws Exception {
+        Board board = new Board();
+        board.createNewGame("host", "port");
+
+        assertNotNull(board.makeMove(1, 5));
+    }
+
     @Test
     public void assertThatBoardCanReturnStatusOnMove() throws Exception {
         Board board = new Board();
         board.createNewGame("host", "port");
 
-        assertNotNull(board.makeMove(1, 5));
+        assertThat(board.makeMove(1, 5), instanceOf(GameStatus.class));
     }
 }
