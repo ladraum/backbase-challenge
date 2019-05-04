@@ -46,7 +46,7 @@ public class KalahStateTest {
     }
 
     @Test
-    public void assertThatPlayerCantPlayOnFinishedGame() {
+    public void assertThatPlayerOneCantPlayOnFinishedGame() {
         Kalah game = new Kalah();
         Map<Integer, Integer> status = game.getStatus();
         status.put(0, 0);
